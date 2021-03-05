@@ -120,6 +120,7 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
+              user_id: "",
               msg: 'E-mail толтырылған жоқ',
               token: ""
             }));
@@ -132,6 +133,7 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
+              user_id: "",
               msg: 'Құпия сөз толтырылған жоқ',
               token: ""
             }));
@@ -144,6 +146,7 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
+              user_id: "",
               msg: 'Есіміңіз толтырылған жоқ',
               token: ""
             }));
@@ -156,6 +159,7 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
+              user_id: "",
               msg: 'Тел. нөміріңіз толтырылған жоқ',
               token: ""
             }));
@@ -177,6 +181,7 @@ router.post('/signup', /*#__PURE__*/function () {
             });
             return _context2.abrupt("return", res.status(200).send({
               type: "ok",
+              user_id: instUser.insertId,
               msg: 'Қолданушы тіркелді',
               token: token
             }));
@@ -186,6 +191,7 @@ router.post('/signup', /*#__PURE__*/function () {
             _context2.t0 = _context2["catch"](8);
             return _context2.abrupt("return", res.status(401).send({
               type: "error",
+              user_id: "",
               msg: _context2.t0.message,
               token: ""
             }));

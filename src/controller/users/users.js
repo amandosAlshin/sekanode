@@ -36,22 +36,22 @@ router.post('/signup', async (req, res) => {
   if(!req.body.email){
     return res
       .status(200)
-      .send({ type: "error", msg: 'E-mail толтырылған жоқ',token: "" });
+      .send({ type: "error", user_id: "", msg: 'E-mail толтырылған жоқ',token: "" });
   }
   if(!req.body.password){
     return res
       .status(200)
-      .send({ type: "error", msg: 'Құпия сөз толтырылған жоқ',token: "" });
+      .send({ type: "error", user_id: "", msg: 'Құпия сөз толтырылған жоқ',token: "" });
   }
   if(!req.body.name){
     return res
       .status(200)
-      .send({ type: "error", msg: 'Есіміңіз толтырылған жоқ',token: "" });
+      .send({ type: "error", user_id: "", msg: 'Есіміңіз толтырылған жоқ',token: "" });
   }
   if(!req.body.phone){
     return res
       .status(200)
-      .send({ type: "error", msg: 'Тел. нөміріңіз толтырылған жоқ',token: "" });
+      .send({ type: "error", user_id: "", msg: 'Тел. нөміріңіз толтырылған жоқ',token: "" });
   }
   try {
     let instUser = await db.query('INSERT INTO users (email,password,name,phone) values ("'+req.body.email+'","'+req.body.password+'",'+
@@ -67,11 +67,11 @@ router.post('/signup', async (req, res) => {
       secret,
       { expiresIn: '1d' },
     );
-    return res.status(200).send({ type: "ok", msg: 'Қолданушы тіркелді' ,token});
+    return res.status(200).send({ type: "ok", user_id: instUser.insertId, msg: 'Қолданушы тіркелді' ,token});
   } catch (err) {
     return res
       .status(401)
-      .send({ type: "error",msg: err.message, token: "" });
+      .send({ type: "error", user_id: "", msg: err.message, token: "" });
   }
 });
 
