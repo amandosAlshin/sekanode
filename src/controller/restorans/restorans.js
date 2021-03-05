@@ -6,11 +6,11 @@ import { getDistance } from 'geolib';
 router.post('/list', async (req, res) => {
   try {
     const restoransList = await db.query('SELECT id,place_id,name,rating,lat,lng,formatted_address,table FROM restorans;');
-    return res.status(200).send({ "restorans": restoransList });
+    return res.status(200).send({type: "ok", msg: "", restorans: restoransList });
   } catch (err) {
     return res
       .status(401)
-      .send({ status: false, message: err.message });
+      .send({ type: "error", msg: err.message, restorans: [] });
   }
   
 });
@@ -28,15 +28,15 @@ router.post('/near', async (req, res) => {
         item.distance = itemDistance;
         return itemDistance <= 1500;
       });
-      return res.status(200).send({ "restorans": nearRestorans });
+      return res.status(200).send({type: "ok", msg: "", restorans: nearRestorans });
     }else{
-      return res.status(200).send({ "restorans": restoransList });
+      return res.status(200).send({type: "ok", msg: "", restorans: restoransList });
     }
     
   } catch (err) {
     return res
       .status(401)
-      .send({ status: false, message: err.message });
+      .send({ type: "error", msg: err.message, restorans: [] });
   }
   
 });
@@ -44,11 +44,11 @@ router.post('/near', async (req, res) => {
 router.post('/menu-list', async (req, res) => {
   try {
     const restoranMenuList = await db.query('SELECT id,`name`,description,price,restoran_id FROM restoran_menu WHERE restoran_id="'+req.body.place_id+'";');
-    return res.status(200).send({ "restoranMenu": restoranMenuList });
+    return res.status(200).send({type: "ok", msg: "", restoranMenu: restoranMenuList });
   } catch (err) {
     return res
       .status(401)
-      .send({ status: false, message: err.message });
+      .send({ type: "error", msg: err.message, restoranMenu: [] });
   }
   
 });
@@ -60,11 +60,11 @@ router.post('/orders-list', async (req, res) => {
     'LEFT JOIN users u ON o.user_id = u.id '+
     'LEFT JOIN order_menu f ON o.id = f.order_id '+
     'WHERE restoran_id = "'+req.body.place_id+'" GROUP BY o.id');
-    return res.status(200).send({ "orders": orders });
+    return res.status(200).send({type:"ok", msg: "", orders: orders });
   } catch (err) {
     return res
       .status(401)
-      .send({ status: false, message: err.message });
+      .send({ type: "error", msg: err.message, orders: [] });
   }
   
 });

@@ -8,7 +8,7 @@ router.post('/signin', async (req, res) => {
     const data = await db.query('SELECT id,phone,name,email,password FROM users WHERE email="'+req.body.email+'"');
     if(data.length>0){
       if (req.body.password !=data[0].password) {
-        return res.status(200).send({ type: 'error', msg: 'Құпия сөз дұрыс емес' });
+        return res.status(200).send({ type: 'error',token: "", msg: 'Құпия сөз дұрыс емес' });
       }else{
         const token = jwt.sign(
           {
@@ -20,37 +20,37 @@ router.post('/signin', async (req, res) => {
           secret,
           { expiresIn: '1d' },
         );
-        return res.json({ token, type: 'ok' });
+        return res.json({type: 'ok', token,  msg: ""});
       }
     }else{
-      return res.status(200).send({ type: 'error', msg: 'Қолданушы табылмады' });
+      return res.status(200).send({ type: 'error',token: "", msg: 'Қолданушы табылмады' });
     }
   } catch (err) {
     return res
       .status(200)
-      .send({ status: false, message: err.message });
+      .send({ type: "error",token: "", msg: err.message });
   }
 });
 router.post('/signup', async (req, res) => {
   if(!req.body.email){
     return res
       .status(200)
-      .send({ type: "error", msg: 'E-mail толтырылған жоқ' });
+      .send({ type: "error", msg: 'E-mail толтырылған жоқ',token: "" });
   }
   if(!req.body.password){
     return res
       .status(200)
-      .send({ type: "error", msg: 'Құпия сөз толтырылған жоқ' });
+      .send({ type: "error", msg: 'Құпия сөз толтырылған жоқ',token: "" });
   }
   if(!req.body.name){
     return res
       .status(200)
-      .send({ type: "error", msg: 'Есіміңіз толтырылған жоқ' });
+      .send({ type: "error", msg: 'Есіміңіз толтырылған жоқ',token: "" });
   }
   if(!req.body.phone){
     return res
       .status(200)
-      .send({ type: "error", msg: 'Тел. нөміріңіз толтырылған жоқ' });
+      .send({ type: "error", msg: 'Тел. нөміріңіз толтырылған жоқ',token: "" });
   }
   try {
     let instUser = await db.query('INSERT INTO users (email,password,name,phone) values ("'+req.body.email+'","'+req.body.password+'",'+
@@ -70,7 +70,7 @@ router.post('/signup', async (req, res) => {
   } catch (err) {
     return res
       .status(401)
-      .send({ status: false, message: err.message });
+      .send({ type: "error",msg: err.message, token: "" });
   }
 });
 
