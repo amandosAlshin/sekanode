@@ -32,15 +32,18 @@ router.post('/list', /*#__PURE__*/function () {
           case 3:
             restoransList = _context.sent;
             return _context.abrupt("return", res.status(200).send({
-              "restorans": restoransList
+              type: "ok",
+              msg: "",
+              restorans: restoransList
             }));
 
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
             return _context.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context.t0.message
+              type: "error",
+              msg: _context.t0.message,
+              restorans: []
             }));
 
           case 10:
@@ -87,12 +90,16 @@ router.post('/near', /*#__PURE__*/function () {
               return itemDistance <= 1500;
             });
             return _context2.abrupt("return", res.status(200).send({
-              "restorans": nearRestorans
+              type: "ok",
+              msg: "",
+              restorans: nearRestorans
             }));
 
           case 10:
             return _context2.abrupt("return", res.status(200).send({
-              "restorans": restoransList
+              type: "ok",
+              msg: "",
+              restorans: restoransList
             }));
 
           case 11:
@@ -103,8 +110,9 @@ router.post('/near', /*#__PURE__*/function () {
             _context2.prev = 13;
             _context2.t0 = _context2["catch"](0);
             return _context2.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context2.t0.message
+              type: "error",
+              msg: _context2.t0.message,
+              restorans: []
             }));
 
           case 16:
@@ -133,15 +141,18 @@ router.post('/menu-list', /*#__PURE__*/function () {
           case 3:
             restoranMenuList = _context3.sent;
             return _context3.abrupt("return", res.status(200).send({
-              "restoranMenu": restoranMenuList
+              type: "ok",
+              msg: "",
+              restoranMenu: restoranMenuList
             }));
 
           case 7:
             _context3.prev = 7;
             _context3.t0 = _context3["catch"](0);
             return _context3.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context3.t0.message
+              type: "error",
+              msg: _context3.t0.message,
+              restoranMenu: []
             }));
 
           case 10:
@@ -170,15 +181,18 @@ router.post('/orders-list', /*#__PURE__*/function () {
           case 3:
             orders = _context4.sent;
             return _context4.abrupt("return", res.status(200).send({
-              "orders": orders
+              type: "ok",
+              msg: "",
+              orders: orders
             }));
 
           case 7:
             _context4.prev = 7;
             _context4.t0 = _context4["catch"](0);
             return _context4.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context4.t0.message
+              type: "error",
+              msg: _context4.t0.message,
+              orders: []
             }));
 
           case 10:

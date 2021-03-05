@@ -47,6 +47,7 @@ router.post('/signin', /*#__PURE__*/function () {
 
             return _context.abrupt("return", res.status(200).send({
               type: 'error',
+              token: "",
               msg: 'Құпия сөз дұрыс емес'
             }));
 
@@ -60,8 +61,9 @@ router.post('/signin', /*#__PURE__*/function () {
               expiresIn: '1d'
             });
             return _context.abrupt("return", res.json({
+              type: 'ok',
               token: token,
-              type: 'ok'
+              msg: ""
             }));
 
           case 11:
@@ -71,6 +73,7 @@ router.post('/signin', /*#__PURE__*/function () {
           case 13:
             return _context.abrupt("return", res.status(200).send({
               type: 'error',
+              token: "",
               msg: 'Қолданушы табылмады'
             }));
 
@@ -82,8 +85,9 @@ router.post('/signin', /*#__PURE__*/function () {
             _context.prev = 16;
             _context.t0 = _context["catch"](0);
             return _context.abrupt("return", res.status(200).send({
-              status: false,
-              message: _context.t0.message
+              type: "error",
+              token: "",
+              msg: _context.t0.message
             }));
 
           case 19:
@@ -112,7 +116,8 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
-              msg: 'E-mail толтырылған жоқ'
+              msg: 'E-mail толтырылған жоқ',
+              token: ""
             }));
 
           case 2:
@@ -123,7 +128,8 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
-              msg: 'Құпия сөз толтырылған жоқ'
+              msg: 'Құпия сөз толтырылған жоқ',
+              token: ""
             }));
 
           case 4:
@@ -134,7 +140,8 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
-              msg: 'Есіміңіз толтырылған жоқ'
+              msg: 'Есіміңіз толтырылған жоқ',
+              token: ""
             }));
 
           case 6:
@@ -145,7 +152,8 @@ router.post('/signup', /*#__PURE__*/function () {
 
             return _context2.abrupt("return", res.status(200).send({
               type: "error",
-              msg: 'Тел. нөміріңіз толтырылған жоқ'
+              msg: 'Тел. нөміріңіз толтырылған жоқ',
+              token: ""
             }));
 
           case 8:
@@ -173,8 +181,9 @@ router.post('/signup', /*#__PURE__*/function () {
             _context2.prev = 16;
             _context2.t0 = _context2["catch"](8);
             return _context2.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context2.t0.message
+              type: "error",
+              msg: _context2.t0.message,
+              token: ""
             }));
 
           case 19:

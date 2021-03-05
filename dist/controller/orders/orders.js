@@ -134,8 +134,8 @@ router.post('/add', /*#__PURE__*/function () {
             _context2.prev = 23;
             _context2.t0 = _context2["catch"](10);
             return _context2.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context2.t0.message
+              type: "error",
+              msg: _context2.t0.message
             }));
 
           case 26:
@@ -164,15 +164,18 @@ router.post('/list', /*#__PURE__*/function () {
           case 3:
             orders = _context3.sent;
             return _context3.abrupt("return", res.status(200).send({
-              "orders": orders
+              type: "ok",
+              msg: "",
+              orders: orders
             }));
 
           case 7:
             _context3.prev = 7;
             _context3.t0 = _context3["catch"](0);
             return _context3.abrupt("return", res.status(401).send({
-              status: false,
-              message: _context3.t0.message
+              type: "error",
+              msg: _context3.t0.message,
+              orders: []
             }));
 
           case 10:
