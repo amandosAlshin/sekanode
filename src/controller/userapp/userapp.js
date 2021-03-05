@@ -26,3 +26,5 @@ router.post('/userinfo', async (req, res) => {
         .send({ type: "error", msg: err.message, user_id: {} });
     }
   });
+
+  export default router;

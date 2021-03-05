@@ -49,7 +49,7 @@ var corsOptions = {
 app.use('/api/restorans', cors(corsOptions), _index.restorans);
 app.use('/api/users', cors(corsOptions), _index.users);
 app.use('/cabinet/orders', cors(corsOptions), _index.orders);
-app.use('/cabinet/user', cors(corsOptions), _index.user);
+app.use('/cabinet/userapp', cors(corsOptions), _index.userapp);
 app.listen(port, function () {
   return console.log("Server serik diplom listinging on localhost: ".concat(port));
 });
