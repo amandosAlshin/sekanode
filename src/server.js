@@ -1,6 +1,6 @@
 import path from 'path';
 import express from 'express';
-import { restorans,users,orders} from './controller/index.js';
+import { restorans,users,orders,user} from './controller/index.js';
 
 import jwt from 'express-jwt';
 import bodyParser from 'body-parser';
@@ -42,6 +42,8 @@ app.use('/api/restorans',cors(corsOptions), restorans);
 app.use('/api/users',cors(corsOptions), users);
 
 app.use('/cabinet/orders',cors(corsOptions), orders);
+
+app.use('/cabinet/user',cors(corsOptions), user);
 
 
 app.listen(port, () => console.log(`Server serik diplom listinging on localhost: ${port}`));

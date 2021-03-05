@@ -3,12 +3,13 @@ import db from '../../services/connectionAsmazirDB'
 import jwt from 'jsonwebtoken';
 const { secret } = require('../../config/vars');  
 const router = Router();
+
 router.post('/signin', async (req, res) => {
   try {
     const data = await db.query('SELECT id,phone,name,email,password FROM users WHERE email="'+req.body.email+'"');
     if(data.length>0){
       if (req.body.password !=data[0].password) {
-        return res.status(200).send({ type: 'error',token: "", msg: 'Құпия сөз дұрыс емес' });
+        return res.status(200).send({ type: 'error',token: "",user_id: "", msg: 'Құпия сөз дұрыс емес' });
       }else{
         const token = jwt.sign(
           {
@@ -20,15 +21,15 @@ router.post('/signin', async (req, res) => {
           secret,
           { expiresIn: '1d' },
         );
-        return res.json({type: 'ok', token,  msg: ""});
+        return res.json({type: 'ok', token,  user_id: data[0].id, msg: ""});
       }
     }else{
-      return res.status(200).send({ type: 'error',token: "", msg: 'Қолданушы табылмады' });
+      return res.status(200).send({ type: 'error',token: "", user_id: "", msg: 'Қолданушы табылмады' });
     }
   } catch (err) {
     return res
       .status(200)
-      .send({ type: "error",token: "", msg: err.message });
+      .send({ type: "error",token: "", user_id: "", msg: err.message });
   }
 });
 router.post('/signup', async (req, res) => {
