@@ -48,7 +48,7 @@ router.post('/signin', /*#__PURE__*/function () {
             return _context.abrupt("return", res.status(200).send({
               type: 'error',
               token: "",
-              user_id: "",
+              user_id: 0,
               msg: 'Құпия сөз дұрыс емес'
             }));
 
@@ -64,7 +64,7 @@ router.post('/signin', /*#__PURE__*/function () {
             return _context.abrupt("return", res.json({
               type: 'ok',
               token: token,
-              user_id: data[0].id,
+              user_id: parseInt(data[0].id),
               msg: ""
             }));
 
@@ -76,7 +76,7 @@ router.post('/signin', /*#__PURE__*/function () {
             return _context.abrupt("return", res.status(200).send({
               type: 'error',
               token: "",
-              user_id: "",
+              user_id: 0,
               msg: 'Қолданушы табылмады'
             }));
 
@@ -90,7 +90,7 @@ router.post('/signin', /*#__PURE__*/function () {
             return _context.abrupt("return", res.status(200).send({
               type: "error",
               token: "",
-              user_id: "",
+              user_id: 0,
               msg: _context.t0.message
             }));
 
