@@ -13,7 +13,7 @@ router.post('/signin', async (req, res) => {
       }else{
         const token = jwt.sign(
           {
-            user_id: data[0].id,
+            user_id: parseInt(data[0].id),
             email: data[0].email,
             phone: data[0].phone,
             name: data[0].name,

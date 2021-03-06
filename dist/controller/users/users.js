@@ -54,7 +54,7 @@ router.post('/signin', /*#__PURE__*/function () {
 
           case 9:
             token = _jsonwebtoken["default"].sign({
-              user_id: data[0].id,
+              user_id: parseInt(data[0].id),
               email: data[0].email,
               phone: data[0].phone,
               name: data[0].name
