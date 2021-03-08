@@ -32,7 +32,7 @@ router.post('/userinfo', /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return _connectionAsmazirDB["default"].query('SELECT id,phone,name,email,password FROM users WHERE email="' + req.user.user_id + '"');
+            return _connectionAsmazirDB["default"].query('SELECT id,phone,name,email,password FROM users WHERE id="' + req.user.user_id + '"');
 
           case 3:
             data = _context.sent;

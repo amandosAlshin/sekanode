@@ -9,7 +9,7 @@ router.use(function authCheck(req, res, next) {
   });
 router.post('/userinfo', async (req, res) => {
     try {
-      const data = await db.query('SELECT id,phone,name,email,password FROM users WHERE email="'+req.user.user_id+'"');
+      const data = await db.query('SELECT id,phone,name,email,password FROM users WHERE id="'+req.user.user_id+'"');
       if(data.length>0){
         const user = {
           email: data[0].email,
