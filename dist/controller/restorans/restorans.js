@@ -27,7 +27,7 @@ router.post('/list', /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return _connectionAsmazirDB["default"].query('SELECT id,place_id,name,rating,lat,lng,formatted_address,table FROM restorans;');
+            return _connectionAsmazirDB["default"].query('SELECT id,place_id,name,rating,lat,lng,formatted_address,`table` FROM restorans;');
 
           case 3:
             restoransList = _context.sent;
@@ -68,7 +68,7 @@ router.post('/near', /*#__PURE__*/function () {
             _context2.prev = 0;
             restoransList = [];
             _context2.next = 4;
-            return _connectionAsmazirDB["default"].query('SELECT id,place_id,name,rating,lat,lng,formatted_address,table FROM restorans;');
+            return _connectionAsmazirDB["default"].query('SELECT id,place_id,name,rating,lat,lng,formatted_address,`table`FROM restorans;');
 
           case 4:
             restoransList = _context2.sent;

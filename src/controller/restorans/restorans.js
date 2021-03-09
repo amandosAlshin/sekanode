@@ -5,7 +5,7 @@ import { getDistance } from 'geolib';
 
 router.post('/list', async (req, res) => {
   try {
-    const restoransList = await db.query('SELECT id,place_id,name,rating,lat,lng,formatted_address,table FROM restorans;');
+    const restoransList = await db.query('SELECT id,place_id,name,rating,lat,lng,formatted_address,`table` FROM restorans;');
     return res.status(200).send({type: "ok", msg: "", restorans: restoransList });
   } catch (err) {
     return res
@@ -18,7 +18,7 @@ router.post('/list', async (req, res) => {
 router.post('/near', async (req, res) => {
   try {
     let restoransList = [];
-    restoransList = await db.query('SELECT id,place_id,name,rating,lat,lng,formatted_address,table FROM restorans;');
+    restoransList = await db.query('SELECT id,place_id,name,rating,lat,lng,formatted_address,`table`FROM restorans;');
     if(restoransList.length>0){
       let nearRestorans = restoransList.filter((item) => {
         let itemDistance = getDistance(
