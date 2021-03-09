@@ -1,20 +1,20 @@
-import mysql from 'mysql';
-const util = require('util');
+const mariadb = require('mariadb/callback');
+const { promisify } = require('util')
 import {asmazirDB} from '../config/vars.js';
-const db = mysql.createConnection({
-    host: asmazirDB.host,
-    user:  asmazirDB.user,
-    password:  asmazirDB.password,
-    database:  asmazirDB.database,
-});
 
-// connect to database
-db.connect((err) => {
-    if (err) {
-        console.log('error mysql connect',err);
-        return err;
-    }
-    console.log('asmazir db connected');
+
+const db = mariadb.createConnection({
+    host: asmazirDB.host,
+    user:   asmazirDB.user,
+    database: asmazirDB.database,
+    password: asmazirDB.password,
+    });
+db.connect(err => {
+  if (err) {
+    console.log("not connected due to error: " + err);
+  } else {
+    console.log("connected ! connection id is " + conn.threadId);
+  }
 });
-db.query = util.promisify(db.query);
+db.query = promisify(db.query);
 export default db;
