@@ -68,7 +68,7 @@ router.post('/add', async (req, res) => {
 
 router.post('/list', async (req, res) => {
   try {
-    const orders = await db.query('SELECT o.id,o.user_id,o.restoran_id,GROUP_CONCAT(f.food_name) as food_name,o.date,o.table,o.count_guest,o.total_sum FROM orders o LEFT JOIN order_menu f ON o.id = f.order_id  WHERE user_id = "'+req.user.user_id+'" GROUP BY o.id');
+    const orders = await db.query('SELECT o.id,o.user_id,o.restoran_id,GROUP_CONCAT(f.food_name) as food_name,o.date,o.table,o.count_guest,o.total_sum,r.name as restoran_name FROM orders o LEFT JOIN order_menu f ON o.id = f.order_id LEFT JOIN restorans r ON o.restoran_id = r.restoran_id  WHERE user_id = "'+req.user.user_id+'" GROUP BY o.id');
     return res.status(200).send({ type: "ok", msg: "", orders: orders });
   } catch (err) {
     return res
