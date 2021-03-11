@@ -136,7 +136,7 @@ router.post('/menu-list', /*#__PURE__*/function () {
           case 0:
             _context3.prev = 0;
             _context3.next = 3;
-            return _connectionAsmazirDB["default"].query('SELECT id,`name`,description,price,restoran_id FROM restoran_menu WHERE restoran_id="' + req.body.place_id + '";');
+            return _connectionAsmazirDB["default"].query('SELECT id,`name`,description,price,restoran_id,image FROM restoran_menu WHERE restoran_id="' + req.body.place_id + '";');
 
           case 3:
             restoranMenuList = _context3.sent;
