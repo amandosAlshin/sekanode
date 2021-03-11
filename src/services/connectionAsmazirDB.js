@@ -1,17 +1,17 @@
-const mariadb = require('mariadb/callback');
+import mysql from 'mysql';
 const util = require('util');
-import {asmazirPsDB} from '../config/vars.js';
-const db = mariadb.createConnection({
-    host: asmazirPsDB.host,
-    user:  asmazirPsDB.user,
-    password:  asmazirPsDB.password,
-    database:  asmazirPsDB.database,
+import {asmazirDB} from '../config/vars.js';
+const db = mysql.createConnection({
+    host: asmazirDB.host,
+    user:  asmazirDB.user,
+    password:  asmazirDB.password,
+    database:  asmazirDB.database,
 });
 
 // connect to database
 db.connect((err) => {
     if (err) {
-        console.log('error mariadb connect',err);
+        console.log('error mysql connect',err);
         return err;
     }
     console.log('asmazir db connected');

@@ -1,26 +1,29 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
-var _vars = require("../config/vars.js");
+var _mysql = _interopRequireDefault(require("mysql"));
 
-var mariadb = require('mariadb/callback');
+var _vars = require("../config/vars.js");
 
 var util = require('util');
 
-var db = mariadb.createConnection({
-  host: _vars.asmazirPsDB.host,
-  user: _vars.asmazirPsDB.user,
-  password: _vars.asmazirPsDB.password,
-  database: _vars.asmazirPsDB.database
+var db = _mysql["default"].createConnection({
+  host: _vars.asmazirDB.host,
+  user: _vars.asmazirDB.user,
+  password: _vars.asmazirDB.password,
+  database: _vars.asmazirDB.database
 }); // connect to database
+
 
 db.connect(function (err) {
   if (err) {
-    console.log('error mariadb connect', err);
+    console.log('error mysql connect', err);
     return err;
   }
 
