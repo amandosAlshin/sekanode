@@ -43,7 +43,7 @@ router.post('/near', async (req, res) => {
 
 router.post('/menu-list', async (req, res) => {
   try {
-    const restoranMenuList = await db.query('SELECT id,`name`,description,price,restoran_id,image FROM restoran_menu WHERE restoran_id="'+req.body.place_id+'";');
+    const restoranMenuList = await db.query('SELECT id,`name`,description,price,restoran_id,image as imageUrl FROM restoran_menu WHERE restoran_id="'+req.body.place_id+'";');
     return res.status(200).send({type: "ok", msg: "", restoranMenu: restoranMenuList });
   } catch (err) {
     return res
