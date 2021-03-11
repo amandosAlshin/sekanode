@@ -15,4 +15,10 @@ module.exports = {
     password: process.env.MYSQL_ASMAZIR_PASSWORD,
     database: process.env.MYSQL_ASMAZIR_DB
   },
+  asmazirPsDB:{
+    host: process.env.MYSQL_ASMAZIR_PS_HOST,
+    user: process.env.MYSQL_ASMAZIR_PS_USER,
+    password: process.env.MYSQL_ASMAZIR_PS_PASSWORD,
+    database: process.env.MYSQL_ASMAZIR_PS_DB
+  },
 };
