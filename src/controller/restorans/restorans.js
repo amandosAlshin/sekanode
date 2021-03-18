@@ -55,7 +55,7 @@ router.post('/menu-list', async (req, res) => {
 
 router.post('/orders-list', async (req, res) => {
   try {
-    const orders = await db.query('SELECT o.id,o.user_id,o.restoran_id,GROUP_CONCAT(f.food_name) as food_name,r.name as restoran_name, CONCAT(u.name, " ", u.phone) as user,o.date,o.table as count_guest,o.count_guest as table,o.total_sum FROM orders o '+ 
+    const orders = await db.query('SELECT o.id,o.user_id,o.restoran_id,GROUP_CONCAT(f.food_name) as food_name,r.name as restoran_name, CONCAT(u.name, " ", u.phone) as user,o.date,o.table,o.count_guest,o.total_sum FROM orders o '+ 
     'LEFT JOIN restorans r ON o.restoran_id = r.place_id '+
     'LEFT JOIN users u ON o.user_id = u.id '+
     'LEFT JOIN order_menu f ON o.id = f.order_id '+

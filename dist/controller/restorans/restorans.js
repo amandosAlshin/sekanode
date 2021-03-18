@@ -176,7 +176,7 @@ router.post('/orders-list', /*#__PURE__*/function () {
           case 0:
             _context4.prev = 0;
             _context4.next = 3;
-            return _connectionAsmazirDB["default"].query('SELECT o.id,o.user_id,o.restoran_id,GROUP_CONCAT(f.food_name) as food_name,r.name as restoran_name, CONCAT(u.name, " ", u.phone) as user,o.date,o.table as count_guest,o.count_guest as table,o.total_sum FROM orders o ' + 'LEFT JOIN restorans r ON o.restoran_id = r.place_id ' + 'LEFT JOIN users u ON o.user_id = u.id ' + 'LEFT JOIN order_menu f ON o.id = f.order_id ' + 'WHERE restoran_id = "' + req.body.place_id + '" GROUP BY o.id');
+            return _connectionAsmazirDB["default"].query('SELECT o.id,o.user_id,o.restoran_id,GROUP_CONCAT(f.food_name) as food_name,r.name as restoran_name, CONCAT(u.name, " ", u.phone) as user,o.date,o.table,o.count_guest,o.total_sum FROM orders o ' + 'LEFT JOIN restorans r ON o.restoran_id = r.place_id ' + 'LEFT JOIN users u ON o.user_id = u.id ' + 'LEFT JOIN order_menu f ON o.id = f.order_id ' + 'WHERE restoran_id = "' + req.body.place_id + '" GROUP BY o.id');
 
           case 3:
             orders = _context4.sent;
